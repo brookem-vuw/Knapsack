@@ -12,11 +12,15 @@ public class Knapsack {
     private Pack[][] packTable;
 
     public Knapsack( int weight){
+        long start = System.nanoTime();
         genList();
         this.noItems = itemList.size();
         this.maxWeight = weight;
         this.packTable = new Pack[maxWeight][noItems];
         run();
+        long end = System.nanoTime();
+        long time = end-start;
+        System.out.println("Time: " + time);
     }
 
     public void run(){
@@ -73,15 +77,18 @@ public class Knapsack {
     public void genList (){
         this.itemList = new ArrayList<Item>();
         itemList.add(new Item("pen", 1, 1));
+        itemList.add(new Item("pen2", 1, 1));
         itemList.add(new Item("knife", 2, 1));
+        itemList.add(new Item("knife2", 2, 1));
         itemList.add(new Item("case", 3, 2));
+        itemList.add(new Item("case2", 3, 2));
         itemList.add(new Item("lunch", 2, 3));
+        itemList.add(new Item("lunch2", 2, 3));
         itemList.add(new Item("bottle", 1, 3));
-
-
+        itemList.add(new Item("bottle2", 1, 3));
     }
 
     public static void main(String[] args) {
-	    new Knapsack(6);
+	    new Knapsack(50);
     }
 }
